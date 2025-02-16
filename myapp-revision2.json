@@ -23,7 +23,7 @@
             "volumesFrom": [],
             "ulimits": [],
             "systemControls": []
-        }
+        } 
     ],
     "family": "myapp",
     "executionRoleArn": "arn:aws:iam::867344466595:role/ecsTaskExecutionRole",
