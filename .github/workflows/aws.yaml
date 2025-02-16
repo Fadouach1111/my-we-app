@@ -29,13 +29,18 @@ jobs:
               run: |    
                     docker build -t $ECR_REGISTRY/${{ secrets.ECR_REPO_NAME}}:$IMAGE_TAG .
                     docker push $ECR_REGISTRY/${{ secrets.ECR_REPO_NAME}}:$IMAGE_TAG 
+            
+            - name: Debug image output
+              run: |
+                echo "Image URI: ${{ steps.build-image.outputs.image }}"  
+
             - name: Fill in the new image ID in the Amazon ECS task definition
               id: task-def
               uses: aws-actions/amazon-ecs-render-task-definition@v1 
               with:
                     task-definition: myapp-revision2.json
                     container-name: myapp
-                    image: ${{ steps.build-image.outputs.image}}
+                    image: ${{ steps.build-image.outputs.image }}
 
             - name: deploy amazon ecs task definition with a service
               uses: aws-actions/amazon-ecs-deploy-task-definition@v1 
