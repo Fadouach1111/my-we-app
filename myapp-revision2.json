@@ -64,6 +64,5 @@
     },
     "registeredAt": "2025-02-16T12:36:00.675Z",
     "registeredBy": "arn:aws:iam::867344466595:user/fadoua-admin",
-    "enableFaultInjection": false,
     "tags": []
 }
